@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :articles do
+    get 'approve', on: :member
+  end
   devise_for :users, controllers: {
     :sessions => "api/users",
   }

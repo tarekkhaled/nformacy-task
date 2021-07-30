@@ -1,11 +1,11 @@
 require_relative '../../lib/json_web_token'
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  extend Enumerize
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  extend Enumerize
+
+  has_many :articles, dependent: :destroy
 
   enumerize :status, in: [:admin, :author]
 
@@ -22,7 +22,7 @@ class User < ApplicationRecord
       expires_at = Time.zone.now + 4.days
       user_info[:token] = JsonWebToken.encode({ user_id: user.id }, expires_at)
       user_info[:expires_at] = expires_at
-      user_info[:user]  = user
+      user_info[:user] = user
       user_info
     else
       raise "wrong password!"
