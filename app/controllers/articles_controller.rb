@@ -9,12 +9,17 @@ class ArticlesController < Api::BaseApi
   # GET /articles
   def index
     if is_public_user?
-      @articles = Article.find(status: :published)
+      @articles = Article.where(status: :published)
     else
       if is_admin?
         @articles = Article.all
       else
-        @articles = Article.find_by(user_id: current_user.id, status: :published)
+        own_articles, other_articles = Article.all.partition { |article| article.user_id == current_user.id }
+        other_articles = other_articles.select { |article| article.status == :published }
+        @articles = {
+          own_articles: own_articles,
+          other_articles: other_articles
+        }
       end
     end
 
