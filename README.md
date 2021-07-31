@@ -12,9 +12,9 @@ This is implementation for the task using Ruby on rails, postgresql , ReactJS
 ## Backend Installation && Starting
 
 ```
-docker-compose build
-docker-compose run nformacy rails db:setup
-docker-compose up
+sudo docker-compose build
+sudo docker-compose run nformacy rails db:setup
+sudo docker-compose up
 ```
 
 ## Frontend Installation && Starting
