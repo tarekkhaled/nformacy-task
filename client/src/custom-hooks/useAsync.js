@@ -50,7 +50,13 @@ function useAsync(initialState) {
       dispatch({ type: "pending" });
       promise.then(
         (response) => {
-          dispatch({ type: "resolved", data: response.data.data });
+          dispatch({
+            type: "resolved",
+            data: response.data.data || [
+              ...response.data?.own_articles.data,
+              ...response?.data?.other_articles.data,
+            ],
+          });
         },
         (error) => {
           dispatch({ type: "rejected", error });
