@@ -1,24 +1,35 @@
-# README
+# Nformacy-task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+This is implementation for the task using Ruby on rails, postgresql , ReactJS
 
-* Ruby version
+## Table of Contents
 
-* System dependencies
+- [Installation](#installation)
+- [Tech Used](#tech-used)
 
-* Configuration
+## Installation
 
-* Database creation
+### using Docker
 
-* Database initialization
+```
+sudo docker-compose up --build
+cd client/
+npm install 
+npm start
+```
 
-* How to run the test suite
+OR
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Tech Used
 
-* ...
+- Ruby on Rails
+- Postgres
+- React
+- axios
+- Docker
+
+## APIs As Postman Collection
+https://www.getpostman.com/collections/dd3d3c96b240a8f5e9cc
