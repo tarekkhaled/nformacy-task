@@ -9,16 +9,21 @@ This is implementation for the task using Ruby on rails, postgresql , ReactJS
 - [Installation](#installation)
 - [Tech Used](#tech-used)
 
-## Installation
-
+## Backend Installation && Starting
 
 ```
-sudo docker-compose up --build
+docker-compose build
+docker-compose run nformacy rails db:setup
+docker-compose up
+```
+
+## Frontend Installation && Starting
+
+```
 cd client/
 npm install 
 npm start
 ```
-
 
 
 ## Tech Used
