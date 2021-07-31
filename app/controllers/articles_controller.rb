@@ -10,20 +10,21 @@ class ArticlesController < Api::BaseApi
   def index
     if is_public_user?
       @articles = Article.where(status: :published)
+      render json: ArticleSerializer.new(@articles)
     else
       if is_admin?
         @articles = Article.all
+        render json: ArticleSerializer.new(@articles)
       else
         own_articles, other_articles = Article.all.partition { |article| article.user_id == current_user.id }
         other_articles = other_articles.select { |article| article.status == :published }
         @articles = {
-          own_articles: own_articles,
-          other_articles: other_articles
+          own_articles: ArticleSerializer.new(own_articles),
+          other_articles: ArticleSerializer.new(other_articles)
         }
+        render json: @articles
       end
     end
-
-    render json: @articles
   end
 
   # POST /articles

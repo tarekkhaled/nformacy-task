@@ -1,6 +1,6 @@
 module Api
   class Api::UsersController < Api::BaseApi
-    def new
+    def create
       begin
         data = User.handle_login!(params[:email], params[:password])
         render json: { data: data }, status: :created
