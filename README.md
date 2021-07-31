@@ -11,7 +11,6 @@ This is implementation for the task using Ruby on rails, postgresql , ReactJS
 
 ## Installation
 
-### using Docker
 
 ```
 sudo docker-compose up --build
@@ -20,7 +19,6 @@ npm install
 npm start
 ```
 
-OR
 
 
 ## Tech Used
